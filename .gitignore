@@ -73,3 +73,6 @@ coverage.xml
 
 # Windows
 Thumbs.db
+
+# remove node_modules from git
+goongoonarray-frontend/node_modules/
