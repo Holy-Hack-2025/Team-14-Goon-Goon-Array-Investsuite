@@ -1,9 +1,12 @@
 import './ProfileComponent.css';
 import React from 'react';
 
-function ProfileComponent(props) {
+function ProfileComponent({ id, hoveredId, setHoveredId }) {
+    const isBlurred = hoveredId !== null && hoveredId !== id;
+    
     return (
-        <div className='profile-container' id={`profile-${props.id}`}>
+        <div className={`profile-container ${isBlurred ? 'blurred' : ''}`} 
+        id={`profile-${id}`}>
             <div className='node-left-container'>
                 <div className='node-left'>
 
@@ -54,8 +57,12 @@ function ProfileComponent(props) {
 
             </div>
 
-            <div className='profile-type'>
+            <div className='profile-type-container'>
+                <div className='profile-type'
+                onMouseEnter={() => setHoveredId(id)}
+                onMouseLeave={() => setHoveredId(null)}>
 
+                </div>
             </div>
         </div>
     )
