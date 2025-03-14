@@ -26,6 +26,7 @@
     width: 50px;
     height: 50px;
     border-radius: 10px;
+    position: relative;
 }
 
 .node-right {
@@ -33,6 +34,43 @@
     width: 50px;
     height: 50px;
     border-radius: 10px;
+    position: relative;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.node-left .tooltip {
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    margin-left: 5px; /* Space between node and tooltip */
+}
+  
+  /* Tooltip for node-right (appears on the left) */
+.node-right .tooltip {
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    margin-right: 5px; /* Space between node and tooltip */
+}
+  
+  /* Show tooltip on hover */
+.node-left:hover .tooltip,
+.node-right:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
 }
 
 .line {
