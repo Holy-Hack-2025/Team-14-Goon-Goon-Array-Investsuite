@@ -1,0 +1,54 @@
+{
+    "portfolios": [
+      {
+        "name": "Volatile Portfolio",
+        "avg_increase": "102",
+        "avg_decrease": "-33",
+        "net_growth_rate": "34",
+        "years_to_car": 3,
+        "years_to_house": 10,
+        "years_to_retirement": 13,
+        "stocks": ["MSFT", "TSLA", "MARA"]
+      },
+      {
+        "name": "Stable Portfolio",
+        "avg_increase": "35",
+        "avg_decrease": "-10",
+        "net_growth_rate": "13",
+        "years_to_car": 6,
+        "years_to_house": 24,
+        "years_to_retirement": 33,
+        "stocks": ["TSLA", "JNJ", "IBM", "WMT", "JPM"]
+      },
+      {
+        "name": "Safe Portfolio",
+        "avg_increase": "17",
+        "avg_decrease": "-3",
+        "net_growth_rate": "7",
+        "years_to_car": 11,
+        "years_to_house": 41,
+        "years_to_retirement": 57,
+        "stocks": ["KO", "WMT", "V"]
+      }
+    ],
+    "stock_predictions": [
+      {"ticker": "MSFT-1", "prediction": 370, "file": "MSFT_final_predictions.csv"},
+      {"ticker": "MSFT-2", "prediction": 383, "file": "MSFT_final_predictions.csv"},
+      {"ticker": "MARA-1", "prediction": 13, "file": "MARA_final_predictions.csv"},
+      {"ticker": "MARA-2", "prediction": 14, "file": "MARA_final_predictions.csv"},
+      {"ticker": "JNJ-1", "prediction": 165, "file": "JNJ_final_predictions.csv"},
+      {"ticker": "JNJ-2", "prediction": 164, "file": "JNJ_final_predictions.csv"},
+      {"ticker": "KO-1", "prediction": 70, "file": "KO_final_predictions.csv"},
+      {"ticker": "KO-2", "prediction": 70, "file": "KO_final_predictions.csv"},
+      {"ticker": "TSLA-1", "prediction": 241, "file": "TSLA_final_predictions.csv"},
+      {"ticker": "TSLA-2", "prediction": 238, "file": "TSLA_final_predictions.csv"},
+      {"ticker": "WMT-1", "prediction": 85, "file": "WMT_final_predictions.csv"},
+      {"ticker": "WMT-2", "prediction": 83, "file": "WMT_final_predictions.csv"},
+      {"ticker": "JPM-1", "prediction": 225, "file": "JPM_final_predictions.csv"},
+      {"ticker": "JPM-2", "prediction": 224, "file": "JPM_final_predictions.csv"},
+      {"ticker": "IBM-1", "prediction": 249, "file": "IBM_final_predictions.csv"},
+      {"ticker": "IBM-2", "prediction": 245, "file": "IBM_final_predictions.csv"},
+      {"ticker": "V-1", "prediction": 328, "file": "V_final_predictions.csv"},
+      {"ticker": "V-2", "prediction": 330, "file": "V_final_predictions.csv"}
+    ]
+  }
