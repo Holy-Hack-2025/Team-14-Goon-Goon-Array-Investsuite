@@ -54,6 +54,11 @@
   width: 200px;
   border: 1px solid #fff;
   border-radius: 10px;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .profile-container {
@@ -69,8 +74,74 @@
   filter: none;
 }
 
-.node-container {
-  border-radius: 10px;
-  display: flex;
-  
+/* hardcoded hitboxed (time constraint) */
+.hitbox-short-1 {
+  position: absolute;
+  left: 110px;
+  top: 170px;
+  height: 65px;
+  width: 65px;
+  /* background-color: black; */
+  cursor: pointer;
+  /* position: relative; */
+  z-index: 999;
+}
+
+.tooltip-short-1 {
+  position: absolute;
+  top: 220px; /* 170px (top) + 65px (height) = 235px, directly below hitbox */
+  left: 102px; /* 110px (left) + 65px (width) / 2 - half tooltip width (approx 15px) = 122.5px for centering */
+  background-color: #333;
+  color: white;
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 2px;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+/* hardcoded hitboxed (time constraint) */
+.hitbox-med-1 {
+  position: absolute;
+  left: 930px;
+  bottom: 230px;
+  height: 65px;
+  width: 65px;
+  /* background-color: black; */
+  cursor: pointer;
+  /* position: relative; */
+  z-index: 999;
+}
+
+.tooltip-med-1 {
+  position: absolute;
+  bottom: 219px; /* 170px (top) + 65px (height) = 235px, directly below hitbox */
+  left: 900px; /* 110px (left) + 65px (width) / 2 - half tooltip width (approx 15px) = 122.5px for centering */
+  background-color: #333;
+  color: white;
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 2px;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+.description-short-2 {
+  font-size: 1.2rem;
+  position: absolute;
+  left: 190px;
+  bottom: 430px;
+}
+
+.full-cover {
+  position: fixed; /* Chatgpt: Changed from absolute to fixed */
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(3px);
+  height: 100vh;
+  width: 100vw;
+  z-index: 500; /* Chatgpt: Ensures it stays on top */
 }

@@ -1,0 +1,9 @@
+.node-container {
+  border-radius: 10px;
+  display: flex;
+}
+
+.node-container img {
+  scale: 0.7;
+  filter: invert(1);
+}
