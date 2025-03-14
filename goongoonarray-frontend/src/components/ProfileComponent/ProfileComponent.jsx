@@ -4,6 +4,11 @@ import 'reactflow/dist/style.css';
 import './ProfileComponent.css';
 import CustomNode from './CustomNode';
 import { initialNodesShort, initialNodesMed, initialNodesLong, initialEdgesShort, initialEdgesMed, initialEdgesLong } from './dataLayout';
+import happy from "./happy.png";
+import sad from "./sad.png";
+import neutral from "./neutral.png";
+import StoryCarousel from './StoryCarousel';
+import StoryCarouselFuture from './StoryCarouselFuture';
 
 const riskyPort = {
   portfolio_name: "Risky",
@@ -114,6 +119,69 @@ const longPort = {
   ]
 };
 
+const longStockData = {
+  WMT: {
+    yearAgo: 60.50262451171875,
+    current: 84.5,
+    "1y": 235.73466545023646,
+    "2y": 242.8462913865901
+  },
+  V: {
+    yearAgo: 284.2890319824219,
+    current: 328.54998779296875,
+    "1y": 247.02261544409552,
+    "2y": 238.00934450278746
+  }
+};
+
+const riskyStockData = {
+  MARA: {
+    yearAgo: 18.229999542236328,
+    current: 12.15999984741211,
+    "1y": 243.54486788342393,
+    "2y": 246.6420618315375
+  },
+  TSLA: {
+    yearAgo: 162.5,
+    current: 240.67999267578125,
+    "1y": 231.92556276297162,
+    "2y": 265.72440563537765
+  }
+}
+
+const medStockData = {
+  MSFT: {
+    yearAgo: 421.9981994628906,
+    current: 378.7699890136719,
+    "1y": 239.2171433045867,
+    "2y": 242.51849897064233
+  },
+  JNJ: {
+    yearAgo: 154.2611846923828,
+    current: 162.99000549316406,
+    "1y": 234.08450614771792,
+    "2y": 245.06258273797772
+  },
+  KO: {
+    yearAgo: 59.176570892333984,
+    current: 69.62000274658203,
+    "1y": 235.1029886618918,
+    "2y": 227.8508068953943
+  },
+  JPM: {
+    yearAgo: 183.76902770996094,
+    current: 225.19000244140625,
+    "1y": 249.27822947842256,
+    "2y": 257.8680445433922
+  },
+  IBM: {
+    yearAgo: 187.13668823242188,
+    current: 245.8000030517578,
+    "1y": 232.54895368418912,
+    "2y": 257.8309696942863
+  }
+}
+
 const proOptions = { hideAttribution: true };
 
 function ProfileComponent({ id, hoveredId, setHoveredId }) {
@@ -123,6 +191,21 @@ function ProfileComponent({ id, hoveredId, setHoveredId }) {
   const [hitboxMed1Hover, setHitboxMed1Hover] = useState(false);
   const [hitboxMed2Hover, setHitboxMed2Hover] = useState(false);
   const [currentMedModal,setCurrentMedModal] = useState(false);
+  const [currentMed2Modal, setCurrentMed2Modal] = useState(false);
+
+    // ChatGPT change: Set the initial character image (neutral state by default)
+    const [characterImage, setCharacterImage] = useState(neutral);
+
+    // ChatGPT change: Function to update the character image based on stock performance
+    const updateCharacterImage = (percentageChange) => {
+      if (percentageChange < -3) {
+        setCharacterImage(sad);
+      } else if (percentageChange >= -3 && percentageChange <= 3) {
+        setCharacterImage(neutral);
+      } else {
+        setCharacterImage(happy);
+      }
+    };
 
   let nodes, edges;
   switch (id) {
@@ -197,9 +280,52 @@ function ProfileComponent({ id, hoveredId, setHoveredId }) {
 
       {/* hardcoded due to time constraint */}
       {currentMedModal ? (
-        <div className='full-cover' onClick={() => setCurrentMedModal(false)}>
-          <div className='modal'>
+        <div className='full-cover'>
+          <div className='modal-container'>
+            <div className='exitBtn' onClick={() => setCurrentMedModal(false)}>
+              X
+            </div>
 
+            <div className='gridSplit-modal'>
+              <div className='grid-character-container'>
+                <img src={characterImage} alt="characterState" />
+              </div>
+
+              <div className='grid-story-container'>
+                <div className='titleContainer'>
+                  <h2>Stock performance overview</h2>
+                </div>
+                
+                <StoryCarousel stockData={medStockData} updateCharacterImage={updateCharacterImage} />
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <>
+        </>
+      )}
+
+      {currentMed2Modal ? (
+        <div className='full-cover'>
+          <div className='modal-container'>
+            <div className='exitBtn' onClick={() => setCurrentMed2Modal(false)}>
+              X
+            </div>
+
+            <div className='gridSplit-modal'>
+              <div className='grid-character-container'>
+                <img src={characterImage} alt="characterState" />
+              </div>
+
+              <div className='grid-story-container'>
+                <div className='titleContainer'>
+                  <h2>Predicted stock performance overview</h2>
+                </div>
+                
+                <StoryCarouselFuture stockData={medStockData} updateCharacterImage={updateCharacterImage} />
+              </div>
+            </div>
           </div>
         </div>
       ) : (
@@ -213,7 +339,7 @@ function ProfileComponent({ id, hoveredId, setHoveredId }) {
           <div className='hitbox-short-1' onMouseEnter={() => setHitboxShortHover(true)} onMouseOut={() => setHitboxShortHover(false)}>
           </div>
           {hitboxShortHover ? (
-            <span className="tooltip-short-1">Hitbox Tooltip</span>
+            <span className="tooltip-short-1">{riskyPort.goals[2].cost}$</span>
           ) : (
             <></>
           )}
@@ -239,8 +365,16 @@ function ProfileComponent({ id, hoveredId, setHoveredId }) {
               )}
 
               {/* harcoded hitboxes (time constraint) */}
-              {/* <div className='hitbox-med-2' onMouseEnter={() => setHitboxMed2Hover(true)} onMouseOut={() => setHitboxMed2Hover(false)}>
-              </div> */}
+              <div className='hitbox-med-2' 
+              onMouseEnter={() => setHitboxMed2Hover(true)}
+              onMouseOut={() => setHitboxMed2Hover(false)}
+              onClick={() => setCurrentMed2Modal(true)}>
+              </div>
+              {hitboxMed2Hover ? (
+                <span className="tooltip-med-2">Performance +1y</span>
+              ) : (
+                <></>
+              )}
             </>
           ) : (
             <>
