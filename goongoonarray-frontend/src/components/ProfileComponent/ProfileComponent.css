@@ -1,0 +1,258 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
+.node-left-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  height: 50px;
+}
+
+.node-right-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 50px;
+}
+
+.node-left {
+  border: 1px solid #fff;
+  width: 50px;
+  height: 50px;
+}
+
+.node-right {
+  border: 1px solid #fff;
+  width: 50px;
+  height: 50px;
+}
+
+
+.graph-container {
+min-height: 700px; /* FIX: Ensures ReactFlow is always visible */
+max-height: 75vh; /* Keeps it from getting too tall */
+border-radius: 10px;
+overflow: hidden;
+position: relative;
+}
+
+.profile-type-container {
+height: 50px;
+width: 100%;
+display: flex;
+margin: 0 auto;
+justify-content: center;
+}
+
+.profile-type {
+height: 50px;
+width: 200px;
+border: 1px solid #fff;
+border-radius: 10px;
+font-size: 1rem;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+.profile-container {
+transition: filter 0.3s ease; /* Smooth transition for blur effect */
+}
+
+.profile-container.blurred {
+filter: blur(2px); /* Adjust blur amount as needed */
+}
+
+/* Optional: Ensure the hovered container stays crisp */
+.profile-container:not(.blurred) {
+filter: none;
+}
+
+/* hardcoded hitboxed (time constraint) */
+.hitbox-short-1 {
+position: absolute;
+left: 110px;
+top: 170px;
+height: 65px;
+width: 65px;
+/* background-color: black; */
+cursor: pointer;
+/* position: relative; */
+z-index: 999;
+}
+
+.tooltip-short-1 {
+position: absolute;
+top: 220px; /* 170px (top) + 65px (height) = 235px, directly below hitbox */
+left: 120px; /* 110px (left) + 65px (width) / 2 - half tooltip width (approx 15px) = 122.5px for centering */
+background-color: #333;
+color: white;
+padding: 2px 6px;
+font-size: 12px;
+border-radius: 2px;
+white-space: nowrap;
+transition: opacity 0.2s ease;
+z-index: 10;
+}
+
+/* hardcoded hitboxed (time constraint) */
+.hitbox-med-1 {
+position: absolute;
+left: 930px;
+bottom: 230px;
+height: 65px;
+width: 65px;
+/* background-color: black; */
+cursor: pointer;
+/* position: relative; */
+z-index: 999;
+}
+
+.tooltip-med-1 {
+position: absolute;
+bottom: 219px; /* 170px (top) + 65px (height) = 235px, directly below hitbox */
+left: 900px; /* 110px (left) + 65px (width) / 2 - half tooltip width (approx 15px) = 122.5px for centering */
+background-color: #333;
+color: white;
+padding: 2px 6px;
+font-size: 12px;
+border-radius: 2px;
+white-space: nowrap;
+transition: opacity 0.2s ease;
+z-index: 10;
+}
+
+.hitbox-med-2 {
+position: absolute;
+left: 665px;
+bottom: 330px;
+height: 65px;
+width: 65px;
+/* background-color: black; */
+cursor: pointer;
+/* position: relative; */
+z-index: 999;
+}
+
+.tooltip-med-2 {
+position: absolute;
+bottom: 312px; /* 170px (top) + 65px (height) = 235px, directly below hitbox */
+left: 648px; /* 110px (left) + 65px (width) / 2 - half tooltip width (approx 15px) = 122.5px for centering */
+background-color: #333;
+color: white;
+padding: 2px 6px;
+font-size: 12px;
+border-radius: 2px;
+white-space: nowrap;
+transition: opacity 0.2s ease;
+z-index: 10;
+}
+
+.description-short-2 {
+font-size: 1.2rem;
+position: absolute;
+left: 190px;
+bottom: 430px;
+}
+
+.description-short-3 {
+font-size: 1.2rem;
+position: absolute;
+left: 205px;
+bottom: 560px;
+}
+
+.description-short-curr {
+font-size: 1.2rem;
+position: absolute;
+left: 295px;
+bottom: 297px;
+}
+
+.description-short-4 {
+font-size: 1.2rem;
+position: absolute;
+left: 197px;
+bottom: 690px;
+}
+
+.full-cover {
+position: fixed; /* Chatgpt: Changed from absolute to fixed */
+top: 0;
+left: 0;
+background-color: rgba(0, 0, 0, 0.4);
+/* backdrop-filter: blur(3px); */
+height: 100vh;
+width: 100vw;
+z-index: 500; /* Chatgpt: Ensures it stays on top */
+display: flex;
+justify-content: center;
+align-items: center;
+pointer-events: none;
+}
+
+.modal-container {
+height: 70%;
+width: 1200px;
+border: 1px solid #fff;
+border-radius: 20px;
+padding:1rem;
+backdrop-filter: blur(30px);
+background-color: rgba(0, 0, 0, 0.5);
+z-index: 501;
+pointer-events: auto; 
+position: relative;
+}
+
+.exitBtn {
+position: absolute;
+top: 0.6rem;
+right: 1rem;
+font-size: 1.5rem;
+cursor: pointer;
+user-select: none;
+}
+
+.gridSplit-modal {
+display: grid;
+grid-template-columns: 3fr 7fr;
+grid-template-rows: 100%;
+height: 100%;
+}
+
+.gridSplit-modal h2 {
+font-size: 2rem;
+}
+
+.grid-character-container {
+height: 100%;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.grid-story-container {
+padding: 1rem;
+display: grid;
+grid-template-columns: 100%;
+grid-template-rows:2fr 8fr;
+}
+
+.titleContainer {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.storyContainer {
+display: flex;
+justify-content: center;
+align-items: center;
+}
