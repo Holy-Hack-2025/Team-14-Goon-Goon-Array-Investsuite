@@ -1,64 +1,40 @@
-import './ProfileComponent.css';
 import React from 'react';
+import ReactFlow, { Background } from 'reactflow';
+import 'reactflow/dist/style.css';
+import './ProfileComponent.css';
+import CustomNode from './CustomNode';
+import { initialNodes, initialEdges } from './data';
 
-function ProfileComponent(props) {
-    return (
-        <div className='profile-container' id={`profile-${props.id}`}>
-            <div className='node-left-container'>
-                <div className='node-left'>
+const proOptions = { hideAttribution: true };
 
-                </div>
-            </div>
+function ProfileComponent({ id, hoveredId, setHoveredId }) {
+  const isBlurred = hoveredId !== null && hoveredId !== id;
+  const nodeTypes = { customNode: CustomNode };
 
-            <div className='line left-to-right'>
+  return (
+    
+    <div className={`profile-container ${isBlurred ? 'blurred' : ''}`} 
+        id={`profile-${id}`}>
+      {/* React Flow Graph */}
+      <div className="graph-container">
+        <ReactFlow 
+          nodes={initialNodes} 
+          edges={initialEdges} 
+          nodeTypes={nodeTypes} 
+          proOptions={proOptions} 
+          fitView
+        />
+      </div>
 
-            </div>
-
-            <div className='node-right-container'>
-                <div className='node-right'>
-
-                </div>
-            </div>
-
-            <div className='line right-to-left'>
-
-            </div>
-
-            <div className='node-left-container'>
-                <div className='node-left'>
-
-                </div>
-            </div>
-
-            <div className='line left-to-right'>
-
-            </div>
-
-            <div className='node-right-container'>
-                <div className='node-right'>
-
-                </div>
-            </div>
-
-            <div className='line right-to-left'>
-
-            </div>
-
-            <div className='node-left-container'>
-                <div className='node-left'>
-
-                </div>
-            </div>
-
-            <div className='line left-to-mid'>
-
-            </div>
-
-            <div className='profile-type'>
-
-            </div>
+      {/* Separate Section Below the Graph */}
+      <div className="profile-type-container">
+        <div className='profile-type'
+                onMouseEnter={() => setHoveredId(id)}
+                onMouseLeave={() => setHoveredId(null)}>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
 
 export default ProfileComponent;

@@ -1,7 +1,6 @@
 .profile-container {
     display: flex;
     flex-direction: column;
-    border: 2px solid #fff;
     padding: 3rem;
     padding-left: 6rem;
     padding-right: 6rem;
@@ -33,6 +32,39 @@
     height: 50px;
 }
 
-.line {
-    height: 100px;
+
+.graph-container {
+  min-height: 700px; /* FIX: Ensures ReactFlow is always visible */
+  max-height: 75vh; /* Keeps it from getting too tall */
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.profile-type-container {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.profile-type {
+  height: 50px;
+  width: 200px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+}
+
+.profile-container {
+  transition: filter 0.3s ease; /* Smooth transition for blur effect */
+}
+
+.profile-container.blurred {
+  filter: blur(2px); /* Adjust blur amount as needed */
+}
+
+/* Optional: Ensure the hovered container stays crisp */
+.profile-container:not(.blurred) {
+  filter: none;
 }
