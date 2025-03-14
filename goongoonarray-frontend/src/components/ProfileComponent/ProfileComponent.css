@@ -161,6 +161,27 @@
   bottom: 430px;
 }
 
+.description-short-3 {
+  font-size: 1.2rem;
+  position: absolute;
+  left: 125px;
+  bottom: 560px;
+}
+
+.description-short-curr {
+  font-size: 1.2rem;
+  position: absolute;
+  left: 295px;
+  bottom: 297px;
+}
+
+.description-short-4 {
+  font-size: 1.2rem;
+  position: absolute;
+  left: 197px;
+  bottom: 690px;
+}
+
 .full-cover {
   position: fixed; /* Chatgpt: Changed from absolute to fixed */
   top: 0;

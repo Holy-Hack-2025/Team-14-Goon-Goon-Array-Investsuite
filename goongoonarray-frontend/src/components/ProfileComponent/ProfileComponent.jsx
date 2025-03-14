@@ -24,7 +24,7 @@ const riskyPort = {
   },
   goals: [
     {
-      goal_name: "Phone ($1k)",
+      goal_name: "Phone",
       cost: 1000, // Chatgpt: Changed string to number
       extraYears: 1.1,
       time_no_crash: 1.1,
@@ -32,7 +32,7 @@ const riskyPort = {
       crash_impact: 0.2
     },
     {
-      goal_name: "Bahamas Vacation ($10k)",
+      goal_name: "Bahamas Vacation",
       cost: 10000, // Chatgpt: Changed string to number
       extraYears: 2.7,
       time_no_crash: 3.8,
@@ -40,7 +40,7 @@ const riskyPort = {
       crash_impact: 0.8
     },
     {
-      goal_name: "Car ($30k)",
+      goal_name: "Car",
       cost: 30000, // Chatgpt: Changed string to number
       extraYears: 3,
       time_no_crash: 6.8,
@@ -65,21 +65,21 @@ const medPort = {
   },
   goals: [
     {
-      goal_name: "Car ($30k)",
+      goal_name: "Car",
       cost: 30000, // Chatgpt: Changed string to number
       time_no_crash: 4.3,
       time_after_crash: 4.9,
       crash_impact: 0.6
     },
     {
-      goal_name: "House ($150k)",
+      goal_name: "House",
       cost: 150000, // Chatgpt: Changed string to number
       time_no_crash: 14.1,
       time_after_crash: 15.2,
       crash_impact: 1.1
     },
     {
-      goal_name: "Retirement ($300k)",
+      goal_name: "Retirement",
       cost: 300000, // Chatgpt: Changed string to number
       time_no_crash: 19.8,
       time_after_crash: 21.2,
@@ -103,14 +103,14 @@ const longPort = {
   },
   goals: [
     {
-      goal_name: "House ($300k)",
+      goal_name: "House",
       cost: 300000, // Chatgpt: Changed string to number
       time_no_crash: 19.6,
       time_after_crash: 21.3,
       crash_impact: 1.7
     },
     {
-      goal_name: "Retirement ($500k)",
+      goal_name: "Retirement",
       cost: 500000, // Chatgpt: Changed string to number
       time_no_crash: 25.1,
       time_after_crash: 27.4,
@@ -192,11 +192,12 @@ function ProfileComponent({ id, hoveredId, setHoveredId }) {
   const [hitboxMed2Hover, setHitboxMed2Hover] = useState(false);
   const [currentMedModal,setCurrentMedModal] = useState(false);
   const [currentMed2Modal, setCurrentMed2Modal] = useState(false);
+  const [hitboxShort1Hover, setHitboxShort1Hover] = useState(false);
 
-    // ChatGPT change: Set the initial character image (neutral state by default)
+    // change: Set the initial character image (neutral state by default)
     const [characterImage, setCharacterImage] = useState(neutral);
 
-    // ChatGPT change: Function to update the character image based on stock performance
+    // change: Function to update the character image based on stock performance
     const updateCharacterImage = (percentageChange) => {
       if (percentageChange < -3) {
         setCharacterImage(sad);
@@ -335,6 +336,10 @@ function ProfileComponent({ id, hoveredId, setHoveredId }) {
 
       {id == 0 ? (
         <>
+          <div className='description-short-curr'>
+            <p>Current</p>
+          </div>
+
           {/* harcoded hitboxes (time constraint) */}
           <div className='hitbox-short-1' onMouseEnter={() => setHitboxShortHover(true)} onMouseOut={() => setHitboxShortHover(false)}>
           </div>
@@ -347,6 +352,16 @@ function ProfileComponent({ id, hoveredId, setHoveredId }) {
           {/* hardcoded text component (time constraint) */}
           <div className='description-short-2'>
             <p>{riskyPort.goals[0].goal_name}: {riskyPort.goals[0].time_no_crash} years</p>
+          </div>
+          
+          {/* hardcoded text component (time constraint) */}
+          <div className='description-short-3'>
+            <p>{riskyPort.goals[1].goal_name}: {riskyPort.goals[1].time_no_crash} years</p>
+          </div>
+
+          {/* hardcoded text component (time constraint) */}
+          <div className='description-short-4'>
+            <p>{riskyPort.goals[2].goal_name}: {riskyPort.goals[2].time_no_crash} years</p>
           </div>
         </>
       ) : (

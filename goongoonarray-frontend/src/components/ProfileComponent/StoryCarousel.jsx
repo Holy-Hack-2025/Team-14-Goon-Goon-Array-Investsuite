@@ -3,12 +3,12 @@ import { Carousel } from 'react-responsive-carousel'; // Carousel component
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // Carousel styles
 
 const StoryCarousel = ({ stockData, updateCharacterImage }) => {
-  // ChatGPT change: Function to calculate percentage change
+  // change: Function to calculate percentage change
   const calculatePercentageChange = (yearAgo, current) => {
     return ((current - yearAgo) / yearAgo) * 100;
   };
 
-  // ChatGPT change: Calculate the average percentage change for the entire portfolio
+  // change: Calculate the average percentage change for the entire portfolio
   const calculateAverageChange = (stockData) => {
     const totalChange = Object.values(stockData).reduce((acc, stock) => {
       const { yearAgo, current } = stock;
@@ -19,15 +19,15 @@ const StoryCarousel = ({ stockData, updateCharacterImage }) => {
     return totalChange / Object.keys(stockData).length;
   };
 
-  // ChatGPT change: Call the updateCharacterImage with the percentage change
+  // change: Call the updateCharacterImage with the percentage change
   const handleStockSlideChange = (stock) => {
     const { yearAgo, current } = stock;
     const percentageChange = calculatePercentageChange(yearAgo, current);
     console.log(percentageChange)
-    updateCharacterImage(percentageChange);  // ChatGPT change: Update character image based on stock's percentage change
+    updateCharacterImage(percentageChange);  // change: Update character image based on stock's percentage change
   };
 
-  // ChatGPT change: Calculate the average percentage change for the entire portfolio
+  // change: Calculate the average percentage change for the entire portfolio
   const averageChange = calculateAverageChange(stockData);
 
   return (
@@ -38,7 +38,7 @@ const StoryCarousel = ({ stockData, updateCharacterImage }) => {
         infiniteLoop={true}
         showThumbs={false}
       >
-        {/* ChatGPT change: Add an extra slide for the portfolio's average percentage change */}
+        {/* change: Add an extra slide for the portfolio's average percentage change */}
         <div key="portfolio-average" className="stock-story-slide">
           <h2>Portfolio Average</h2>
           <p>
@@ -51,7 +51,7 @@ const StoryCarousel = ({ stockData, updateCharacterImage }) => {
           {handleStockSlideChange({ yearAgo: averageChange, current: averageChange })}
         </div>
 
-        {/* ChatGPT change: Render individual stock slides */}
+        {/* change: Render individual stock slides */}
         {Object.keys(stockData).map(stock => {
           const { yearAgo, current } = stockData[stock];
           const percentageChange = calculatePercentageChange(yearAgo, current);
@@ -69,7 +69,7 @@ const StoryCarousel = ({ stockData, updateCharacterImage }) => {
                     : `-${Math.abs(percentageChange).toFixed(2)}% decrease`}
                 </span>
               </p>
-              {handleStockSlideChange(stock)}  {/* ChatGPT change: Trigger image update based on stock's change */}
+              {handleStockSlideChange(stock)}  {/* change: Trigger image update based on stock's change */}
             </div>
           );
         })}
