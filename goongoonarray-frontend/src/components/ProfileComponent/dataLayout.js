@@ -16,14 +16,16 @@ const riskyPort = {
       goal_name: "Phone",
       cost: 1000, // Chatgpt: Changed string to number
       extraYears: 1.1,
+      extraYearsCrash: 1.3,
       time_no_crash: 1.1,
       time_after_crash: 1.3,
       crash_impact: 0.2
     },
     {
-      goal_name: "Bahamas Vacation",
+      goal_name: "Vacation",
       cost: 10000, // Chatgpt: Changed string to number
       extraYears: 2.7,
+      extraYearsCrash: 3.3,
       time_no_crash: 3.8,
       time_after_crash: 4.6,
       crash_impact: 0.8
@@ -32,6 +34,7 @@ const riskyPort = {
       goal_name: "Car",
       cost: 30000, // Chatgpt: Changed string to number
       extraYears: 3,
+      extraYearsCrash: 5.1,
       time_no_crash: 6.8,
       time_after_crash: 8.4,
       crash_impact: 1.6
@@ -121,6 +124,31 @@ export const initialEdgesShort = [
   { id: 'e-11-21', source: '1-1', target: '2-1', type: 'straight', label: `+${riskyPort.goals[2].extraYears}y`}, // Node 1 -> Node 3
   { id: 'e-21-12', source: '2-1', target: '1-2', type: 'straight', label: `+${riskyPort.goals[1].extraYears}y` }, // Node 3 -> Node 2
   { id: 'e-12-22', source: '1-2', target: '2-2', type: 'straight', label: `+${riskyPort.goals[0].extraYears}y` }, // Node 2 -> Node 4
+  { 
+    id: 'e-12-23', 
+    source: '1-1', 
+    target: '1-2', 
+    type: 'curved', 
+    label: `7.5y`,
+    animated: true, // Enables built-in animation
+    style: { 
+      stroke: 'red', 
+      strokeDasharray: '5,5' 
+    }, 
+  }, // Node 2 -> Node 3 (curved, dotted, built-in animated)
+
+  { 
+    id: 'e-12-23', 
+    source: '2-1', 
+    target: '2-2', 
+    type: 'curved', 
+    label: "5.5y",
+    animated: true, // Enables built-in animation
+    style: { 
+      stroke: 'red', 
+      strokeDasharray: '5,5',
+    }, 
+  }, // Node 2 -> Node 3 (curved, dotted, built-in animated)
 ];
 
   // med nodes
