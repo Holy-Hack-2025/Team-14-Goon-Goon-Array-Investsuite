@@ -68,3 +68,9 @@
 .profile-container:not(.blurred) {
   filter: none;
 }
+
+.node-container {
+  border-radius: 10px;
+  display: flex;
+  
+}
