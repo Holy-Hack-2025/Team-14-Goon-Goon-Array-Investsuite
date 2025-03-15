@@ -32,7 +32,7 @@ const riskyPort = {
       crash_impact: 0.2
     },
     {
-      goal_name: "Bahamas Vacation",
+      goal_name: "Vacation",
       cost: 10000, // Chatgpt: Changed string to number
       extraYears: 2.7,
       time_no_crash: 3.8,
