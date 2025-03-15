@@ -1,37 +1,53 @@
-# Holy Hack - repo team Goon Goon Array
-Welcome to your personal Holy Hack GitHub repository! This serves as a central hub for submitting your code to be reviewed during the judging sessions. You should modify this README file to better explain your project to the judges, making it easier for them to understand your work.
+# PathView
 
-## 🚀 Getting Started
+This project simulates investment growth across multiple portfolios using historical stock data and Monte Carlo simulations. It helps investors estimate the time required to reach financial goals based on different investment strategies.
 
-Each team will be given its own repository within the **Holy Hack** GitHub organization, this is your personal repo. Follow these steps to participate:
+## How It Works
+1. The backend fetches historical stock prices using `yfinance`.
+2. Percentage changes are calculated over the past years.
+3. Monte Carlo simulations generate stock price predictions.
+4. Investment growth is estimated using historical trends and dividend yields.
+5. The React frontend visualizes different investment paths.
 
-1. **Clone this repository to your local machine using**:
-   ```sh
-   git clone https://github.com/HOLY-HACK-ORGANIZATION/YOUR-TEAM-REPO.git
+## Technology Stack
+### Backend (Python)
+- `pandas` – Data manipulation
+- `numpy` – Mathematical computations
+- `yfinance` – Fetching stock prices
+- Monte Carlo Simulation (Custom implementation)
+
+### Frontend (React)
+- Displays investment paths: Stable, Risky, and Long-Term
+- Graphs for investment projections
+
+
+## Portfolios & Budgets
+| Portfolio | Stocks | Budget |
+|-----------|--------|--------|
+| **Short-Term (Volatile)** | MSFT, TSLA, MARA | $500 |
+| **Moderate-Term (Stable)** | TSLA, JNJ, IBM, WMT, JPM | $8,000 |
+| **Long-Term (Moderate)** | KO, WMT, V | $30,000 |
+
+
+### Financial Goals
+- **Short-Term**: iPhone 16, Vacation Trip
+- **Moderate-Term**: Car, House
+- **Long-Term**: Retirement
+
+
+## Setup & Usage
+### Backend
+1. Install dependencies for generating data:
    ```
-2. **Add your project files to the appropriate directory in your team's repository**.
-3. **Commit and push your changes**:
-   ```sh
-   git add .
-   git commit -m "added my feature"
-   git push origin my-feature
+   pip install -r requirements.txt
    ```
-4. **Submit a pull request (PR)** to your team's repository for code review and merge.
 
-## Repository Structure (Per Team)
-
-```
-YOUR-TEAM-REPO/
-│-- README.md # Documentation for your team's project
-│-- src/ # source directory
-│-- docs/ # Additional documentation or assets
-```
-
-## Contribution Guidelines
-
-- Make sure your code is clean and well documented.
-- Follow coding standards and best practices.
-- Submit your projects before the 16:00 deadline.
-
-## ❓ Need help?
-If you have any questions, you can contact the github guru's.
+### Frontend
+1. Install dependencies by running 
+    ```
+    npm install
+    ```
+2. Start the server with
+    ```
+    npm run dev
+    ```
